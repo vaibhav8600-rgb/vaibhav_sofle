@@ -26,13 +26,12 @@
         };
     };
 
-    
     // J + K + L combo -> Enter (RET) on BASE layer
     combos {
         compatible = "zmk,combos";
 
         combo_jkl_enter {
-            timeout-ms = <60>;          // Time window to press J+K+L together
+            timeout-ms = <50>;          // Time window to press J+K+L together
             key-positions = <31 32 33>; // J, K, L positions in default_layer
             layers = <BASE>;            // Only active on BASE (default) layer
             bindings = <&kp RET>;       // Sends Enter
@@ -48,13 +47,18 @@
 // |   `   |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |  DEL  |
 // |  ESC  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   | BKSPC |
 // |  TAB  |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   |   '   |
-// | SHIFT |  Z  |  X  |  C   |  V   |  B   |  MUTE  |  |       |  N   |  M    |  ,    |  .   |   /   | SHIFT |
+// | SHIFT |  Z  |  X   |  C   |  V   |  B   |  MUTE  |  |      |  N   |  M    |  ,    |  .   |   /   | SHIFT |
 //               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
+//
+// Note: On default layer:
+//   - Tap A/X/C/V = a/x/c/v
+//   - Hold A      = Ctrl+A (select all)
+//   - Hold X/C/V  = Ctrl+X / Ctrl+C / Ctrl+V
             bindings = <
 &kp GRAVE &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                           &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &kp DEL
 &kp ESC   &kp Q  &kp W    &kp E    &kp R     &kp T                            &kp Y  &kp U     &kp I     &kp O    &kp P    &kp BSPC
-&kp TAB   &kp A  &kp S    &kp D    &kp F     &kp G                            &kp H  &kp J     &kp K     &kp L    &kp SEMI &kp SQT
-&kp LSHFT &kp Z  &kp X    &kp C    &kp V     &kp B      &kp C_MUTE &none      &kp N  &kp M     &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
+&kp TAB   &mt LC(A) A  &kp S    &kp D    &kp F     &kp G                      &kp H  &kp J     &kp K     &kp L    &kp SEMI &kp SQT
+&kp LSHFT &kp Z  &mt LC(X) X  &mt LC(C) C  &mt LC(V) V  &kp B  &kp C_MUTE &none  &kp N  &kp M     &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
                  &kp LGUI &kp LALT &kp LCTRL &mo LOWER  &kp RET    &kp SPACE  &mo RAISE  &kp RCTRL &kp RALT  &kp RGUI
             >;
 

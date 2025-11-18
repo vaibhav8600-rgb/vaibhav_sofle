@@ -31,7 +31,7 @@
         compatible = "zmk,combos";
 
         combo_jkl_enter {
-            timeout-ms = <50>;          // Time window to press J+K+L together
+            timeout-ms = <60>;          // Time window to press J+K+L together
             key-positions = <31 32 33>; // J, K, L positions in default_layer
             layers = <BASE>;            // Only active on BASE (default) layer
             bindings = <&kp RET>;       // Sends Enter
@@ -47,7 +47,7 @@
 // |   `   |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |  DEL  |
 // |  ESC  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   | BKSPC |
 // |  TAB  |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   |   '   |
-// | SHIFT |  Z  |  X   |  C   |  V   |  B   |  MUTE  |  |      |  N   |  M    |  ,    |  .   |   /   | SHIFT |
+// | SHIFT |  Z  |  X  |  C   |  V   |  B   |  MUTE  |  |      |  N   |  M    |  ,    |  .   |   /   | SHIFT |
 //               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
 //
 // Note: On default layer:

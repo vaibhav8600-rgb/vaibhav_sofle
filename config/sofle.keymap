@@ -38,57 +38,6 @@
         };
     };
 
-   // --------------------------------------------------------------------------------------
-    //  NEW SECTION: Macro Definitions for App Launch Shortcuts (Win + Number)
-    // --------------------------------------------------------------------------------------
-    macros {
-        compatible = "zmk,macros";
-
-        // Macro for the W key: Launches 5 apps in sequence (Win+1, Win+2, Win+3, Win+4, Win+5)
-        launch_all_five: launch_all_five {
-            label = "LAUNCH_ALL_FIVE";
-            bindings = <&kp LWIN &kp N1>, <&kp LWIN &kp N1>,
-                       <&kp LWIN &kp N2>, <&kp LWIN &kp N2>,
-                       <&kp LWIN &kp N3>, <&kp LWIN &kp N3>,
-                       <&kp LWIN &kp N4>, <&kp LWIN &kp N4>,
-                       <&kp LWIN &kp N5>, <&kp LWIN &kp N5>;
-        };
-        
-        // Outlook (1st spot on Taskbar) -> Win + 1
-        win_1: win_1 {
-            label = "WIN_1_OUTLOOK";
-            bindings = <&kp LWIN &kp N1>, <&kp LWIN &kp N1>;
-        };
-
-        // Teams (2nd spot on Taskbar) -> Win + 2
-        win_2: win_2 {
-            label = "WIN_2_TEAMS";
-            bindings = <&kp LWIN &kp N2>, <&kp LWIN &kp N2>;
-        };
-
-        // Chrome (3rd spot on Taskbar) -> Win + 3
-        win_3: win_3 {
-            label = "WIN_3_CHROME";
-            bindings = <&kp LWIN &kp N3>, <&kp LWIN &kp N3>;
-        };
-
-        // VS Code (4th spot on Taskbar) -> Win + 4
-        win_4: win_4 {
-            label = "WIN_4_VSCODE";
-            bindings = <&kp LWIN &kp N4>, <&kp LWIN &kp N4>;
-        };
-
-        // App 5 (5th spot on Taskbar) -> Win + 5
-        win_5: win_5 {
-            label = "WIN_5_APP5";
-            bindings = <&kp LWIN &kp N5>, <&kp LWIN &kp N5>;
-        };
-    };
-    // --------------------------------------------------------------------------------------
-
-    keymap {
-        compatible = "zmk,keymap";
-
     keymap {
         compatible = "zmk,keymap";
 
@@ -102,18 +51,13 @@
 //               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
 //
 // Note: On default layer:
-//   - Top-left: tap = `,          hold = Caps Lock
-//   - Tap 1/2/3/4 = 1/2/3/4
-//   - Hold 1/2/3/4 = Win+1 / Win+2 / Win+3 / Win+4
-//   - Tap A/X/C/V  = a/x/c/v
-//   - Hold A       = Ctrl+A (select all)
-//   - Hold X/C/V   = Ctrl+X / Ctrl+C / Ctrl+V
-//   - Tap W        = w
-//   - M hold       = Ctrl+Shift+M (for mic toggle)
+//   - Tap A/X/C/V = a/x/c/v
+//   - Hold A      = Ctrl+A (select all)
+//   - Hold X/C/V  = Ctrl+X / Ctrl+C / Ctrl+V
             bindings = <
-&mt CLCK GRAVE &mt N1 win_1  &mt N2 win_3  &mt N3 win_4  &mt N4 win_2  &mt N5 win_5                           &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &kp DEL
-&kp ESC   &kp Q  &mt W launch_all_five    &kp E    &kp R     &kp T                                           &kp Y  &kp U     &kp I     &kp O    &kp P    &kp BSPC
-&kp TAB   &mt LC(A) A  &kp S    &kp D    &kp F     &kp G                                                     &kp H  &kp J     &kp K     &kp L    &kp SEMI &kp SQT
+&mt CLCK GRAVE &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                           &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &kp DEL
+&kp ESC   &kp Q  &kp W    &kp E    &kp R     &kp T                            &kp Y  &kp U     &kp I     &kp O    &kp P    &kp BSPC
+&kp TAB   &mt LC(A) A  &kp S    &kp D    &kp F     &kp G                      &kp H  &kp J     &kp K     &kp L    &kp SEMI &kp SQT
 &kp LSHFT &kp Z  &mt LC(X) X  &mt LC(C) C  &mt LC(V) V  &kp B  &kp C_MUTE &none  &kp N  &mt LC(LS(M)) M     &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
                  &kp LGUI &kp LALT &kp LCTRL &mo LOWER  &kp RET    &kp SPACE  &mo RAISE  &kp RCTRL &kp RALT  &kp RGUI
             >;

@@ -55,9 +55,9 @@
 //   - Hold A      = Ctrl+A (select all)
 //   - Hold X/C/V  = Ctrl+X / Ctrl+C / Ctrl+V
             bindings = <
-&mt CLCK GRAVE &kp N1 &kp N2   &kp N3   &kp N4    &kp N5                           &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &kp DEL
-&kp ESC   &kp Q  &kp W    &kp E    &kp R     &kp T                            &kp Y  &kp U     &kp I     &kp O    &kp P    &kp BSPC
-&kp TAB   &mt LC(A) A  &kp S    &kp D    &kp F     &kp G                      &kp H  &kp J     &kp K     &kp L    &kp SEMI &kp SQT
+&mt CLCK GRAVE &mt LG(N1) N1  &mt LG(N2) N2  &mt LG(N3) N3  &mt LG(N4) N4  &mt LG(N5) N5                           &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &kp DEL
+&kp ESC   &kp Q  &kp W    &kp E    &kp R     &kp T                                                                 &kp Y  &kp U     &kp I     &kp O    &kp P    &kp BSPC
+&kp TAB   &mt LC(A) A  &kp S    &kp D    &kp F     &kp G                                                           &kp H  &kp J     &kp K     &kp L    &kp SEMI &kp SQT
 &kp LSHFT &kp Z  &mt LC(X) X  &mt LC(C) C  &mt LC(V) V  &kp B  &kp C_MUTE &none  &kp N  &mt LC(LS(M)) M     &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
                  &kp LGUI &kp LALT &kp LCTRL &mo LOWER  &kp RET    &kp SPACE  &mo RAISE  &kp RCTRL &kp RALT  &kp RGUI
             >;

@@ -9,6 +9,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/mouse.h>
 
 #define BASE 0
 #define LOWER 1
@@ -75,7 +76,7 @@
 &mt CLCK GRAVE &mt LG(N1) N1  &mt LG(N2) N2  &mt LG(N3) N3  &mt LG(N4) N4  &mt LG(N5) N5                           &kp N6 &kp N7    &kp N8    &kp N9   &kp N0   &kp DEL
 &kp ESC   &kp Q  &kp W    &kp E    &kp R     &kp T                                                                 &kp Y  &kp U     &kp I     &kp O    &kp P    &kp BSPC
 &kp TAB   &mt LC(A) A  &kp S    &kp D    &kp F     &kp G                                                           &kp H  &kp J     &kp K     &kp L    &kp SEMI &kp SQT
-&kp LSHFT &kp Z  &mt LC(X) X  &mt LC(C) C  &mt LC(V) V  &kp B  &kp C_MUTE &none  &kp N  &mt LC(LS(M)) M     &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
+&kp LSHFT &mt LC(Z) Z  &mt LC(X) X  &mt LC(C) C  &mt LC(V) V  &kp B  &kp C_MUTE &none  &kp N  &mt LC(LS(M)) M     &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
                  &kp LGUI &kp LALT &kp LCTRL &mo LOWER  &kp RET    &kp SPACE  &mo RAISE  &kp RCTRL &kp RALT  &kp RGUI
             >;
 
@@ -107,14 +108,14 @@
 // ------------------------------------------------------------------------------------------------------------
 // | BTCLR | BT1  | BT2  |  BT3  |  BT4  |  BT5 |                |      |      |       |      |       |       |
 // |       | INS  | PSCR | GUI   |       |      |                | PGUP |      |   ^   |      |       |       |
-// |       | ALT  | CTRL | SHIFT |       | CAPS |                | PGDN |   <- |   v   |  ->  |  DEL  | BKSPC |
-// |       | UNDO | CUT  | COPY  | PASTE |      |      |  |      |      |      |       |      |       |       |
+// |       | LCLK |  M↑  | RCLK  |  MCLK | CAPS |                | PGDN |   <- |   v   |  ->  |  DEL  | BKSPC |
+// |       |  M←  |  M↓  |   M→  | PASTE |      |      |  |      |      |      |       |      |       |       |
 //                |      |       |       |      |      |  |      |      |      |       |      |
             bindings = <
-&bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                  &trans    &trans    &trans   &trans    &trans  &trans
-&trans     &kp INS      &kp PSCRN    &kp K_CMENU  &trans       &trans                        &kp PG_UP &trans    &kp UP   &trans    &kp N0  &trans
-&trans     &kp LALT     &kp LCTRL    &kp LSHFT    &trans       &kp CLCK                      &kp PG_DN &kp LEFT  &kp DOWN &kp RIGHT &kp DEL &kp BSPC
-&trans     &kp K_UNDO   &kp K_CUT    &kp K_COPY   &kp K_PASTE  &trans        &trans  &trans  &trans    &multi_win_apps    &trans   &trans    &trans  &trans
+&bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1      &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                  &trans    &trans    &trans   &trans    &trans  &trans
+&trans     &kp INS      &kp PSCRN         &kp K_CMENU  &trans       &trans                        &kp PG_UP &trans    &kp UP   &trans    &kp N0  &trans
+&trans     &mkp LCLK        &mmv MOVE_UP      &mkp RCLK         &mkp MCLK    &kp CLCK                      &kp PG_DN &kp LEFT  &kp DOWN &kp RIGHT &kp DEL &kp BSPC
+&trans     &mmv MOVE_LEFT   &mmv MOVE_DOWN    &mmv MOVE_RIGHT   &kp K_PASTE  &trans        &trans  &trans  &trans    &multi_win_apps    &trans   &trans    &trans  &trans
                         &trans       &trans       &trans       &trans        &trans  &trans  &trans    &trans    &trans   &trans
             >;
 

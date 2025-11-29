@@ -16,35 +16,7 @@
 #define RAISE 2
 #define ADJUST 3
 
-// MO_TOG(LOWER) -> &mo_tog LOWER LOWER
-// Short press/short hold  (< 340 ms) = momentary layer (&mo, Shift-like)
-// Long hold               (>= 340 ms) = toggle layer on/off (&tog)
-#define MO_TOG(layer) &mo_tog layer layer
-
 / {
-    // Custom hold-tap for layer keys:
-    // - Short press/short hold -> momentary layer (Shift-like)
-    // - Long hold              -> toggle layer ON/OFF
-    behaviors {
-        mo_tog: behavior_mo_tog {
-           compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-
-            // tap-preferred:
-            // - Release BEFORE tapping-term-ms  -> tap binding (&mo)   = momentary
-            // - Hold PAST tapping-term-ms      -> hold binding (&tog) = toggle
-            flavor = "tap-preferred";
-
-            // Make the "long hold" clearly longer than your normal tap
-            // Increase if you still see accidental toggles.
-            tapping-term-ms = <380>;
-
-            // tap  = &mo  (momentary layer, Shift-like)
-            // hold = &tog (toggle layer ON/OFF)
-            bindings = <&mo>, <&tog>;
-        };
-    };
-
     // Activate ADJUST layer when LOWER and RAISE are both active
     conditional_layers {
         compatible = "zmk,conditional-layers";
@@ -81,6 +53,29 @@
                 &kp LG(N5)
             >;
         };
+        lower_lock: lower_lock {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <40>;
+            tap-ms  = <30>;
+            bindings = <
+                &kp LCTRL
+                &kp E
+                &tog LOWER
+            >;
+        };
+
+        raise_lock: raise_lock {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <40>;
+            tap-ms  = <30>;
+            bindings = <
+                &kp LCTRL
+                &kp I
+                &tog RAISE
+            >;
+        };
     };
 
     keymap {
@@ -106,7 +101,7 @@
 &kp ESC        &kp Q          &kp W          &kp E          &kp R          &kp T                                                &mt LC(Y) Y  &kp U     &kp I              &kp O     &kp P    &kp BSPC
 &kp TAB        &mt LC(A) A    &kp S          &kp D          &kp F          &kp G                                                &kp H        &kp J     &kp K              &kp L     &kp SEMI &kp SQT
 &kp LSHFT      &mt LC(Z) Z    &mt LC(X) X    &mt LC(C) C    &mt LC(V) V    &kp B      &kp C_MUTE                   &none        &kp N     &mt LC(LS(M)) M    &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
-                              &kp LGUI       &kp LALT       &kp LCTRL      MO_TOG(LOWER)  &kp RET                      &kp SPACE    MO_TOG(RAISE) &kp RCTRL          &kp RALT  &kp RGUI
+                              &kp LGUI       &kp LALT       &kp LCTRL      &mo LOWER  &kp RET                      &kp SPACE    M&mo RAISE &kp RCTRL          &kp RALT  &kp RGUI
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

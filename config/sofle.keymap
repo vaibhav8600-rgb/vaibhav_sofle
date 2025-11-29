@@ -27,17 +27,20 @@
     // - Long hold              -> toggle layer ON/OFF
     behaviors {
         mo_tog: behavior_mo_tog {
-            compatible = "zmk,behavior-hold-tap";
+           compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
 
             // tap-preferred:
-            // release before tapping-term-ms => tap binding (&mo)
-            // hold past tapping-term-ms      => hold binding (&tog)
+            // - Release BEFORE tapping-term-ms  -> tap binding (&mo)   = momentary
+            // - Hold PAST tapping-term-ms      -> hold binding (&tog) = toggle
             flavor = "tap-preferred";
-            tapping-term-ms = <340>;
 
-            // tap binding  = &mo   (momentary)
-            // hold binding = &tog  (toggle)
+            // Make the "long hold" clearly longer than your normal tap
+            // Increase if you still see accidental toggles.
+            tapping-term-ms = <380>;
+
+            // tap  = &mo  (momentary layer, Shift-like)
+            // hold = &tog (toggle layer ON/OFF)
             bindings = <&mo>, <&tog>;
         };
     };

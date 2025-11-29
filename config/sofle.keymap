@@ -17,6 +17,19 @@
 #define ADJUST 3
 
 / {
+    // ---------- TAP-DANCE FOR CUSTOM LAYER BEHAVIOR ----------
+    tap_dance_lower: tap_dance_lower {
+        compatible = "zmk,behavior-tap-dance";
+        tapping-term-ms = <220>;   // double-tap speed
+        bindings = <&mo LOWER>, <&nop>, <&tog LOWER>;
+    };
+
+    tap_dance_raise: tap_dance_raise {
+        compatible = "zmk,behavior-tap-dance";
+        tapping-term-ms = <220>;
+        bindings = <&mo RAISE>, <&nop>, <&tog RAISE>;
+    };
+
     // Activate ADJUST layer when LOWER and RAISE are both active
     conditional_layers {
         compatible = "zmk,conditional-layers";
@@ -53,29 +66,6 @@
                 &kp LG(N5)
             >;
         };
-        lower_lock: lower_lock {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <40>;
-            tap-ms  = <30>;
-            bindings = <
-                &kp LCTRL
-                &kp E
-                &tog LOWER
-            >;
-        };
-
-        raise_lock: raise_lock {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <40>;
-            tap-ms  = <30>;
-            bindings = <
-                &kp LCTRL
-                &kp I
-                &tog RAISE
-            >;
-        };
     };
 
     keymap {
@@ -101,7 +91,7 @@
 &kp ESC        &kp Q          &kp W          &kp E          &kp R          &kp T                                                &mt LC(Y) Y  &kp U     &kp I              &kp O     &kp P    &kp BSPC
 &kp TAB        &mt LC(A) A    &kp S          &kp D          &kp F          &kp G                                                &kp H        &kp J     &kp K              &kp L     &kp SEMI &kp SQT
 &kp LSHFT      &mt LC(Z) Z    &mt LC(X) X    &mt LC(C) C    &mt LC(V) V    &kp B      &kp C_MUTE                   &none        &kp N     &mt LC(LS(M)) M    &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
-                              &kp LGUI       &kp LALT       &kp LCTRL      &mo LOWER  &kp RET                      &kp SPACE    &mo RAISE &kp RCTRL          &kp RALT  &kp RGUI
+                              &kp LGUI       &kp LALT       &kp LCTRL      &tap_dance_lower  &kp RET                      &kp SPACE    &tap_dance_raise &kp RCTRL          &kp RALT  &kp RGUI
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;

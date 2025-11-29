@@ -21,15 +21,15 @@
     tap_dance_lower: tap_dance_lower {
         compatible = "zmk,behavior-tap-dance";
         #binding-cells = <0>;
-        tapping-term-ms = <220>;   // double-tap speed
-        bindings = <&mo LOWER>, <&none>, <&tog LOWER>;
+        tapping-term-ms = <280>;   // double-tap speed
+        bindings = <&mo LOWER>, <&tog LOWER>;
     };
 
     tap_dance_raise: tap_dance_raise {
         compatible = "zmk,behavior-tap-dance";
         #binding-cells = <0>;
-        tapping-term-ms = <220>;
-        bindings = <&mo RAISE>, <&none>, <&tog RAISE>;
+        tapping-term-ms = <280>;
+        bindings = <&mo RAISE>, <&tog RAISE>;
     };
 
     // Activate ADJUST layer when LOWER and RAISE are both active

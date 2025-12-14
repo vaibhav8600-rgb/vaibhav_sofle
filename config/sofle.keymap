@@ -32,14 +32,6 @@
         bindings = <&mo RAISE>, <&tog RAISE>;
     };
 
-    a_kp: a_kp {
-        compatible = "zmk,behavior-key-press";
-        label = "A_KP";
-        #binding-cells = <0>;
-        bindings = <&kp A>;
-    };
-
-
     // Activate ADJUST layer when LOWER and RAISE are both active
     conditional_layers {
         compatible = "zmk,conditional-layers";
@@ -90,16 +82,22 @@
         };
     };
 
+     // Wrapper "key-press" behavior (takes 1 arg: the keycode)
+    a_kp: a_kp {
+        compatible = "zmk,behavior-key-press";
+        #binding-cells = <1>;
+    };
+
     // Special A key: Tap = A, Hold = Ctrl+A (with longer tapping term to avoid accidental holds)
     a_select_all: a_select_all {
         compatible = "zmk,behavior-hold-tap";
-        label = "A_SEL_ALL";
         #binding-cells = <0>;
 
         flavor = "tap-preferred";
         tapping-term-ms = <350>;   // <-- increase/decrease this if needed (try 320–380)
 
-        bindings = < &select_all &a_kp >;
+        // Hold binding first, Tap binding second
+        bindings = < &select_all  &a_kp A >;
     };
 
     keymap {

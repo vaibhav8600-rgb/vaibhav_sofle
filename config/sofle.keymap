@@ -32,14 +32,6 @@
         bindings = <&mo RAISE>, <&tog RAISE>;
     };
 
-    a_tapdance: a_tapdance {
-        compatible = "zmk,behavior-tap-dance";
-        #binding-cells = <0>;
-        tapping-term-ms = <280>;
-
-        bindings = <&kp A>, <&kp LCTRL>;
-     };
-
     // Activate ADJUST layer when LOWER and RAISE are both active
     conditional_layers {
         compatible = "zmk,conditional-layers";
@@ -76,6 +68,25 @@
                 &kp LG(N5)
             >;
         };
+
+        select_all_macro: select_all_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+              = <&macro_press   &kp LCTRL>
+              , <&macro_tap     &kp A>
+              , <&macro_release &kp LCTRL>
+              ;
+        };
+    };
+
+    behaviors {
+          a_tapdance: a_tapdance {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <280>;
+            bindings = <&kp A>, <&select_all_macro>;
+          };
     };
 
     keymap {

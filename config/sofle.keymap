@@ -89,9 +89,9 @@
         #binding-cells = <0>;
 
         flavor = "tap-preferred";
-        tapping-term-ms = <340>;   // <-- increase/decrease this if needed (try 320–380)
+        tapping-term-ms = <350>;   // <-- increase/decrease this if needed (try 320–380)
 
-        bindings = <&select_all>, <&kp A>;
+        bindings = < &select_all &kp A >;
     };
 
     keymap {

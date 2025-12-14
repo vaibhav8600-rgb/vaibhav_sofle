@@ -103,7 +103,7 @@
 //
 // Note: On default layer:
 //   - Tap A/X/C/V = a/x/c/v
-//   
+//   - Double Tap  = Ctrl+A
 //   - Hold X/C/V  = Ctrl+X / Ctrl+C / Ctrl+V
 //   - Hold X      = Ctrl+Z
 //   - Hold Y      = Ctrl+Y

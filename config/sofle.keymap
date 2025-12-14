@@ -68,6 +68,30 @@
                 &kp LG(N5)
             >;
         };
+
+    
+    // Select All (Ctrl+A)
+    select_all: select_all {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <
+                &macro_press   &kp LCTRL
+                &macro_tap     &kp A
+                &macro_release &kp LCTRL
+            >;
+        };
+    };
+
+    // Special A key: Tap = A, Hold = Ctrl+A (with longer tapping term to avoid accidental holds)
+    a_select_all: a_select_all {
+        compatible = "zmk,behavior-hold-tap";
+        label = "A_SEL_ALL";
+        #binding-cells = <0>;
+
+        flavor = "tap-preferred";
+        tapping-term-ms = <340>;   // <-- increase/decrease this if needed (try 320–380)
+
+        bindings = <&select_all>, <&kp A>;
     };
 
     keymap {
@@ -91,7 +115,7 @@
             bindings = <
 &mt CLCK GRAVE &mt LG(N1) N1  &mt LG(N2) N2  &mt LG(N3) N3  &mt LG(N4) N4  &mt LG(N5) N5                                        &kp N6       &kp N7    &kp N8             &kp N9    &kp N0   &kp DEL
 &kp ESC        &kp Q          &kp W          &kp E          &kp R          &kp T                                                &mt LC(Y) Y  &kp U     &kp I              &kp O     &kp P    &kp BSPC
-&kp TAB        &mt LC(A) A   &kp S          &kp D          &kp F          &kp G                                                &kp H        &kp J     &kp K              &kp L     &kp SEMI &kp SQT
+&kp TAB        &a_select_all  &kp S          &kp D          &kp F          &kp G                                                &kp H        &kp J     &kp K              &kp L     &kp SEMI &kp SQT
 &kp LSHFT      &mt LC(Z) Z    &mt LC(X) X    &mt LC(C) C    &mt LC(V) V    &kp B      &kp C_MUTE                   &none        &kp N     &mt LC(LS(M)) M    &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
                               &kp LGUI       &kp LALT       &kp LCTRL      &tap_dance_lower  &kp RET                      &kp SPACE    &tap_dance_raise &kp RCTRL          &kp RALT  &kp RGUI
             >;

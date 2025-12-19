@@ -59,10 +59,9 @@
             * Extremely safe: no accidental rolls
             */
             layers = <BASE>;
-            key-positions = <13 14 15>;  // A, S, D (see note below)
-
+            key-positions = <14 15 16>;  // A, S, D 
             timeout-ms = <65>;
-            bindings = <&select_all_macro>;
+            bindings = <&kp LC(A)>;
         };
 
     };
@@ -81,16 +80,6 @@
                 &kp LG(N4)
                 &kp LG(N5)
             >;
-        };
-
-        select_all_macro: select_all_macro {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-              = <&macro_press   &kp LCTRL>
-              , <&macro_tap     &kp A>
-              , <&macro_release &kp LCTRL>
-              ;
         };
     };
 

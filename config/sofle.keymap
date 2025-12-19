@@ -59,7 +59,7 @@
             * Extremely safe: no accidental rolls
             */
             layers = <BASE>;
-            key-positions = <14 15 16>;  // A, S, D 
+            key-positions = <26 27 28>;  // A, S, D 
             timeout-ms = <65>;
             bindings = <&kp LC(A)>;
         };

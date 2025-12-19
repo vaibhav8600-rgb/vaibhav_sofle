@@ -51,6 +51,20 @@
             layers = <BASE>;            // Only active on BASE (default) layer
             bindings = <&kp RET>;       // Sends Enter
         };
+
+        combo_asd_select_all {
+
+            /*
+            * A + S + D (left hand home row)
+            * Extremely safe: no accidental rolls
+            */
+            layers = <BASE>;
+            key-positions = <13 14 15>;  // A, S, D (see note below)
+
+            timeout-ms = <65>;
+            bindings = <&select_all_macro>;
+        };
+
     };
 
     // 🔮 Magic macro: Win+1 → Win+2 → Win+3 → Win+4 → Win+5
@@ -81,12 +95,7 @@
     };
 
     behaviors {
-          a_tapdance: a_tapdance {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <280>;
-            bindings = <&kp A>, <&select_all_macro>;
-          };
+         
     };
 
     keymap {
@@ -110,7 +119,7 @@
             bindings = <
 &mt CLCK GRAVE &mt LG(N1) N1  &mt LG(N2) N2  &mt LG(N3) N3  &mt LG(N4) N4  &mt LG(N5) N5                                        &kp N6       &kp N7    &kp N8             &kp N9    &kp N0   &kp DEL
 &kp ESC        &kp Q          &kp W          &kp E          &kp R          &kp T                                                &mt LC(Y) Y  &kp U     &kp I              &kp O     &kp P    &kp BSPC
-&kp TAB        &a_tapdance    &kp S          &kp D          &kp F          &kp G                                                &kp H        &kp J     &kp K              &kp L     &kp SEMI &kp SQT
+&kp TAB        &kp A          &kp S          &kp D          &kp F          &kp G                                                &kp H        &kp J     &kp K              &kp L     &kp SEMI &kp SQT
 &kp LSHFT      &mt LC(Z) Z    &mt LC(X) X    &mt LC(C) C    &mt LC(V) V    &kp B      &kp C_MUTE                   &none        &kp N     &mt LC(LS(M)) M    &kp COMMA &kp DOT  &kp FSLH &kp RSHFT
                               &kp LGUI       &kp LALT       &kp LCTRL      &tap_dance_lower  &kp RET                      &kp SPACE    &tap_dance_raise &kp RCTRL          &kp RALT  &kp RGUI
             >;

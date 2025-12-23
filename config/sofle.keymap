@@ -88,7 +88,13 @@
     };
 
     behaviors {
-         
+          // THIS FIXES THE ERROR: Define the behavior for the scroll wheel
+        inc_dec_msc: inc_dec_msc {
+            compatible = "zmk,behavior-sensor-rotate-var";
+            #sensor-binding-cells = <2>;
+            bindings = <&msc>, <&msc>;
+            tap-ms = <20>;
+        };
     };
 
     keymap {

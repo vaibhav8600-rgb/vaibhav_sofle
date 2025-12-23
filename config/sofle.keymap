@@ -118,7 +118,7 @@
                               &kp LGUI       &kp LALT       &kp LCTRL      &tap_dance_lower  &kp RET                      &kp SPACE    &tap_dance_raise &kp RCTRL          &kp RALT  &kp RGUI
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &msc SCRL_UP &msc SCRL_DOWN>;
         };
 
         lower_layer {
@@ -137,7 +137,7 @@
                     &trans    &trans      &trans    &trans     &trans &trans  &trans    &trans   &trans    &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &msc SCRL_UP &msc SCRL_DOWN>;
         };
 
         raise_layer {
@@ -156,7 +156,7 @@
                         &trans       &trans       &trans       &trans        &trans  &trans  &trans    &trans    &trans   &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &msc SCRL_UP &msc SCRL_DOWN>;
         };
 
         adjust_layer {

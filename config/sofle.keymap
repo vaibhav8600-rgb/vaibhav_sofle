@@ -12,7 +12,7 @@
 
 /* ===== Mouse sweet-spot defaults (ZMK v0.3) ===== */
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1200
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 17
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 14
 #include <dt-bindings/zmk/mouse.h>
 
 #define BASE 0
